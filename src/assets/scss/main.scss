@@ -1,0 +1,47 @@
+// imports
+@forward 'components/navBar.scss';
+
+// fonts
+@font-face {
+  font-family: 'Promt';
+  src: url('../fonts/Prompt-Bold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Josefin';
+  src: url('../fonts/JosefinSans-Bold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'HindMadurai';
+  src: url('../fonts/HindMadurai-Light.ttf') format('truetype');
+}
+
+// colors
+$white: #EAEAEA;
+$black: #26282B;
+$red: #FF555D;
+
+//variables
+$title: 'Promt', sans-serif;
+$body: 'Josefin', sans-serif;
+$text: 'HindMadurai', sans-serif;
+
+//scss
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $title;
+}
+
+body {
+  font-family: $body;
+  background-color: $white;
+  color: $black;
+}
+
+p {
+  font-family: $text;
+}

@@ -8,6 +8,7 @@ import { AuthContext } from '../context/AuthContext.tsx';
 import Login from '../components/Login.tsx';
 import Fridge from '../components/Fridge.tsx';
 import Recipes from '../components/Recipes.tsx';
+import ShoppingList from '../components/ShoppingList.tsx';
 
 export default function HomePage() {
   const auth = useContext(AuthContext);
@@ -28,6 +29,7 @@ export default function HomePage() {
           <button onClick={() => auth.logout()}>Déconnexion</button>
           <Fridge />
           <Recipes />
+          <ShoppingList />
         </div>
       ) : (
         <Login />

@@ -13,13 +13,27 @@ export default function Recipes() {
     throw new Error('Recipes must be used within an AppProvider');
   }
 
-  const { recipes, filterRecipes, searchRecipes } = app;
+  const { fridge, recipes, filterRecipes, searchRecipes, shoppingList, addToShoppingList } =
+    app;
   // Filtre les recettes en fonction du champ de recherche
   const filteredRecipes =
     searchedRecipe.trim() === '' ? recipes : searchRecipes(searchedRecipe);
 
   // Affiche soit toutes les recettes, soit celles réalisables avec le frigo
   const displayedRecipes = showFiltered ? filterRecipes() : filteredRecipes;
+
+  const getMissingIngredients = (recipeIngredients: string[]) => {
+    return recipeIngredients.filter(
+      (ingredient) =>
+        !fridge.some(
+          (item) => item.name.toLowerCase() === ingredient.toLowerCase()
+        )
+    );
+  };
+  const isInShoppingList = (ingredient: string) => {
+    return shoppingList.some((item) => item.name.toLowerCase() === ingredient.toLowerCase());
+  };
+
 
   return (
     <div>
@@ -37,18 +51,32 @@ export default function Recipes() {
         {showFiltered ? 'Voir toutes les recettes' : 'Recettes réalisables'}
       </button>
 
-      {/* Affichage toutes les recettes */}
+      {/* Affiche toutes les recettes */}
       <ul>
-        {displayedRecipes.length > 0 ? (
-          displayedRecipes.map((recipe) => (
+        {displayedRecipes.map((recipe) => {
+          const missingIngredients = getMissingIngredients(recipe.ingredients);
+
+          return (
             <li key={recipe.id}>
               <h3>{recipe.name}</h3>
-              <p>Ingrédients : {recipe.ingredients.join(', ')}</p>
+              <p>Ingrédients :</p>
+              <ul>
+                {recipe.ingredients.map((ingredient) => {
+                  const isMissing = missingIngredients.includes(ingredient);
+                  const alreadyInShoppingList = isInShoppingList(ingredient);
+                  return (
+                    <li key={ingredient}>
+                      {ingredient}
+                      {isMissing && !alreadyInShoppingList && (
+                        <button onClick={() => addToShoppingList(ingredient)}>➕</button>
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
             </li>
-          ))
-        ) : (
-          <p>Aucune recette ne correspond à votre recherche.</p>
-        )}
+          );
+        })}
       </ul>
     </div>
   );

@@ -3,7 +3,7 @@
 
 // fonts
 @font-face {
-  font-family: 'Promt';
+  font-family: 'Prompt';
   src: url('../fonts/Prompt-Bold.ttf') format('truetype');
 }
 @font-face {
@@ -17,11 +17,12 @@
 
 // colors
 $white: #eaeaea;
-$black: #26282b;
+$black: #000000;
+$grey: #26282b;
 $red: #ff555d;
 
 // variables
-$title: 'Promt', sans-serif;
+$title: 'Prompt', sans-serif;
 $body: 'Josefin', sans-serif;
 $text: 'HindMadurai', sans-serif;
 

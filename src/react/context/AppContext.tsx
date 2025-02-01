@@ -1,5 +1,5 @@
 // React
-import React, { createContext } from 'react';
+import { createContext } from 'react';
 
 // Types
 interface Ingredient {
@@ -13,14 +13,14 @@ interface Recipe {
 }
 interface AppContextType {
   fridge: Ingredient[];
-  setFridge: React.Dispatch<React.SetStateAction<string[]>>;
   addIngredient: (name: string) => void;
   removeIngredient: (id: string) => void;
   recipes: Recipe[];
   filterRecipes: () => Recipe[];
   searchRecipes: (userInput: string) => Recipe[];
-  // shoppingList: string[];
-  // setShoppingList: React.Dispatch<React.SetStateAction<string[]>>;
+  shoppingList: Ingredient[];
+  addToShoppingList: (name: string) => void;
+  removeFromShoppingList: (id: string) => void;
 }
 
 export const AppContext = createContext<AppContextType | null>(null);

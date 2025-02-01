@@ -20,8 +20,12 @@ export const AppProvider = ({ children }: ChildrenProps) => {
     const storedFridge = localStorage.getItem('fridge');
     return storedFridge ? JSON.parse(storedFridge) : [];
   });
-  const [shoppingList, setShoppingList] = useState([]);
-  const [recipes, setRecipes] = useState<Recipe[]>([
+  const [shoppingList, setShoppingList] = useState<Ingredient[]>(() => {
+    const storedList = localStorage.getItem('shoppingList');
+    return storedList ? JSON.parse(storedList) : [];
+  });
+  //const [recipes, setRecipes] = useState<Recipe[]>([
+  const [recipes] = useState<Recipe[]>([
     {
       id: '1',
       name: 'Salade César',
@@ -35,6 +39,7 @@ export const AppProvider = ({ children }: ChildrenProps) => {
     { id: '3', name: 'Omelette', ingredients: ['oeuf', 'sel', 'poivre'] },
   ]);
 
+  // Frigo
   const addIngredient = (name: string) => {
     const newIngredient = { id: Date.now().toString(), name: name };
     const updatedFridge = [...fridge, newIngredient];
@@ -47,9 +52,38 @@ export const AppProvider = ({ children }: ChildrenProps) => {
     setFridge(updatedFridge);
     localStorage.setItem('fridge', JSON.stringify(updatedFridge));
   };
+  // Liste de courses
+  const addToShoppingList = (name: string) => {
+    const alreadyInFridge = fridge.some(
+      (item) => item.name.toLowerCase() === name.toLowerCase()
+    );
+    if (alreadyInFridge) {
+      alert(`${name} est déjà dans le frigo !`);
+      return;
+    }
 
+    const alreadyInList = shoppingList.some(
+      (item) => item.name.toLowerCase() === name.toLowerCase()
+    );
+    if (alreadyInList) {
+      alert(`${name} est déjà dans la liste de courses !`);
+      return;
+    }
+
+    const newIngredient = { id: Date.now().toString(), name };
+    const updatedList = [...shoppingList, newIngredient];
+    setShoppingList(updatedList);
+    localStorage.setItem('shoppingList', JSON.stringify(updatedList));
+  };
+
+  const removeFromShoppingList = (id: string) => {
+    const updatedList = shoppingList.filter((item) => item.id !== id);
+    setShoppingList(updatedList);
+    localStorage.setItem('shoppingList', JSON.stringify(updatedList));
+  };
+
+  // Recettes
   const filterRecipes = () => {
-    console.log('Ingrédients dans le frigo :', fridge);
     return recipes.filter((recipe) =>
       recipe.ingredients.some((ingredient) =>
         fridge.some(
@@ -76,6 +110,9 @@ export const AppProvider = ({ children }: ChildrenProps) => {
         recipes,
         filterRecipes,
         searchRecipes,
+        shoppingList,
+        addToShoppingList,
+        removeFromShoppingList,
       }}
     >
       {children}

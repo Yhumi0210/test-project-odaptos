@@ -13,8 +13,14 @@ export default function Recipes() {
     throw new Error('Recipes must be used within an AppProvider');
   }
 
-  const { fridge, recipes, filterRecipes, searchRecipes, shoppingList, addToShoppingList } =
-    app;
+  const {
+    fridge,
+    recipes,
+    filterRecipes,
+    searchRecipes,
+    shoppingList,
+    addToShoppingList,
+  } = app;
   // Filtre les recettes en fonction du champ de recherche
   const filteredRecipes =
     searchedRecipe.trim() === '' ? recipes : searchRecipes(searchedRecipe);
@@ -31,9 +37,10 @@ export default function Recipes() {
     );
   };
   const isInShoppingList = (ingredient: string) => {
-    return shoppingList.some((item) => item.name.toLowerCase() === ingredient.toLowerCase());
+    return shoppingList.some(
+      (item) => item.name.toLowerCase() === ingredient.toLowerCase()
+    );
   };
-
 
   return (
     <div>
@@ -68,7 +75,9 @@ export default function Recipes() {
                     <li key={ingredient}>
                       {ingredient}
                       {isMissing && !alreadyInShoppingList && (
-                        <button onClick={() => addToShoppingList(ingredient)}>➕</button>
+                        <button onClick={() => addToShoppingList(ingredient)}>
+                          ➕
+                        </button>
                       )}
                     </li>
                   );

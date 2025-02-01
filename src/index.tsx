@@ -16,14 +16,24 @@ import { AuthProvider } from './react/provider/AuthProvider.tsx';
 // Children
 import HomePage from './react/pages/HomePage.tsx';
 import NotFound from './react/components/common/NotFound.tsx';
+import Fridge from './react/components/Fridge.tsx';
+import ShoppingList from './react/components/ShoppingList.tsx';
 
 const router = createBrowserRouter([
   {
     element: <App />,
     children: [
       {
-        path: '',
+        path: '/',
         element: <HomePage />,
+      },
+      {
+        path: '/fridge',
+        element: <Fridge />,
+      },
+      {
+        path: '/shopping-list',
+        element: <ShoppingList />,
       },
       {
         path: '*',

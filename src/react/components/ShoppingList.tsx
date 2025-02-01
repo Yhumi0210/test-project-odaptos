@@ -48,7 +48,11 @@ export default function ShoppingList() {
         startY: 40,
         theme: 'striped',
         styles: { fontSize: 12, cellPadding: 5 },
-        headStyles: { fillColor: [255, 85, 93], textColor: 255, fontStyle: "bold" },
+        headStyles: {
+          fillColor: [255, 85, 93],
+          textColor: 255,
+          fontStyle: 'bold',
+        },
         alternateRowStyles: { fillColor: [234, 234, 234] },
       });
     }

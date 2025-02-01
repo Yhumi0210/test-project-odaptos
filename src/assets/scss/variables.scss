@@ -1,0 +1,24 @@
+// fonts
+@font-face {
+  font-family: 'Prompt';
+  src: url('../fonts/Prompt-Bold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Josefin';
+  src: url('../fonts/JosefinSans-Bold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'HindMadurai';
+  src: url('../fonts/HindMadurai-Light.ttf') format('truetype');
+}
+
+// colors
+$white: #eaeaea;
+$black: #000000;
+$grey: #26282b;
+$red: #ff555d;
+
+// fonts
+$title: 'Prompt', sans-serif;
+$body: 'Josefin', sans-serif;
+$text: 'HindMadurai', sans-serif;

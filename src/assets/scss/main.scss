@@ -16,23 +16,28 @@
 }
 
 // colors
-$white: #EAEAEA;
-$black: #26282B;
-$red: #FF555D;
+$white: #eaeaea;
+$black: #26282b;
+$red: #ff555d;
 
-//variables
+// variables
 $title: 'Promt', sans-serif;
 $body: 'Josefin', sans-serif;
 $text: 'HindMadurai', sans-serif;
 
-//scss
+// scss
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: $title;
 }
 

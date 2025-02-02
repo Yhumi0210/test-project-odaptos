@@ -18,6 +18,7 @@ import HomePage from './react/pages/HomePage.tsx';
 import NotFound from './react/components/common/NotFound.tsx';
 import Fridge from './react/components/Fridge.tsx';
 import ShoppingList from './react/components/ShoppingList.tsx';
+import Login from './react/components/Login.tsx';
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: '/shopping-list',
         element: <ShoppingList />,
+      },
+      {
+        path: '/login',
+        element: <Login />,
       },
       {
         path: '*',

@@ -1,8 +1,10 @@
 // imports
+// @forward pour partager même les enfants du parent importé
+// @use pour partager les variables par exemple et éviter de devoir les préfixer
 // components
 @forward 'components/header.scss';
 // variables
-@import 'variables.scss';
+@use 'variables' as *;
 
 // scss
 * {
@@ -34,3 +36,28 @@ p {
 .just-a {
   color: $red;
 }
+
+.log-button-white {
+  color: $white;
+  font-size: 1.2rem;
+  font-family: $body;
+  &:hover {
+    transition:
+            transform 200ms ease-in-out,
+            color 200ms ease-in-out;
+    transform: scale(1.01);
+    color: $red;
+  }
+}
+.log-button-black {
+   color: $black;
+   font-size: 1.2rem;
+   font-family: $body;
+   &:hover {
+     transition:
+             transform 200ms ease-in-out,
+             color 200ms ease-in-out;
+     transform: scale(1.01);
+     color: $red;
+   }
+ }

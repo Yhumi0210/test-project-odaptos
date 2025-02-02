@@ -1,5 +1,6 @@
 // React
 import { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 // Context
 import { AuthContext } from '../context/AuthContext.tsx';
@@ -7,6 +8,7 @@ import { AuthContext } from '../context/AuthContext.tsx';
 export default function Login() {
   const [name, setName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
+  const navigate = useNavigate();
   const auth = useContext(AuthContext);
   if (!auth) {
     throw new Error('Login must be used within an AuthProvider');
@@ -19,6 +21,7 @@ export default function Login() {
       return;
     } else {
       login({ id: Date.now().toString(), name: name, email: email });
+      navigate('/');
     }
   };
 

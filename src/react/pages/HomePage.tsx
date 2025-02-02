@@ -7,6 +7,7 @@ import { AuthContext } from '../context/AuthContext.tsx';
 // Components
 import Login from '../components/Login.tsx';
 import Recipes from '../components/Recipes.tsx';
+import { Link } from 'react-router-dom';
 
 export default function HomePage() {
   const auth = useContext(AuthContext);
@@ -17,21 +18,29 @@ export default function HomePage() {
   const { user } = auth;
 
   return (
-    <div>
-      <h1>HomePage</h1>
+    <main className="hero">
+      <h1 className="hero__title">sm<span className="just-a">a</span>rtfridge</h1>
       {user ? (
-        <div>
+        <section className="hero__recipes">
           <p>
             Bonjour {user.name} {user.email}
           </p>
-          <button onClick={() => auth.logout()}>Déconnexion</button>
+          <Link
+            to={'/login'}
+            onClick={() => {
+              auth.logout();
+            }}
+            className="log-button-white"
+          >
+            Se déconnecter
+          </Link>
           {/*<Fridge />*/}
           <Recipes />
           {/*<ShoppingList />*/}
-        </div>
+        </section>
       ) : (
         <Login />
       )}
-    </div>
+    </main>
   );
 }

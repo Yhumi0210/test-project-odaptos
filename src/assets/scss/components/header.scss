@@ -1,5 +1,5 @@
 // variables
-@import '../variables.scss';
+@use '../variables' as *;
 
 .header {
   display: flex;
@@ -59,7 +59,6 @@
         color: $white;
         font-size: 1.2rem;
         font-family: $body;
-        transition: color 200ms ease-in-out;
       }
       .active {
         color: $red;

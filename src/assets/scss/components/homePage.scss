@@ -1,0 +1,36 @@
+// variables
+@use '../variables' as *;
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &__brand {
+    color: $white;
+    background-color: $grey;
+    font-family: $title;
+  }
+  &__nav {
+    &__link {
+      color: $black;
+      position: relative;
+      &:hover {
+        transition:
+                transform 200ms ease-in-out,
+                color 200ms ease-in-out;
+        transform: scale(1.01);
+        color: $red;
+      }
+    }
+  }
+  .active {
+    color: $red;
+    position: relative;
+    &:after {
+      content: '●';
+      position: absolute;
+      top: 0.8rem;
+      left: 43%;
+    }
+  }
+}

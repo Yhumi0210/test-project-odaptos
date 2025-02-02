@@ -1,12 +1,23 @@
 // React
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
+
+// Context
+import { AuthContext } from '../../context/AuthContext.tsx';
+
+// Components
 
 export default function Header() {
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
+  const auth = useContext(AuthContext);
+  if (!auth) {
+    throw new Error('HomePage must be used within an AuthProvider');
+  }
+
+  const { user } = auth;
 
   const handleMenuToggle = () => {
     setIsAnimating(true);
@@ -90,15 +101,30 @@ export default function Header() {
           >
             M<span className="just-a">a</span> liste de courses
           </Link>
-          <Link
-            to={'/login'}
-            onClick={() => {
-              setMenuOpen(false);
-            }}
-            className="header__nav__link"
-          >
-            Se connecter
-          </Link>
+          {user ? (
+            <div className="log">
+              <Link
+                to={'/login'}
+                onClick={() => {
+                  auth.logout();
+                  setMenuOpen(false);
+                }}
+                className="log-button-white"
+              >
+                Se déconnecter
+              </Link>
+            </div>
+          ) : (
+            <Link
+              to={'/login'}
+              onClick={() => {
+                setMenuOpen(false);
+              }}
+              className="log-button-white"
+            >
+              Se connecter
+            </Link>
+          )}
         </nav>
       </header>
     </>

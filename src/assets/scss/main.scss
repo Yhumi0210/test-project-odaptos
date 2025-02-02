@@ -3,6 +3,7 @@
 // @use pour partager les variables par exemple et éviter de devoir les préfixer
 // components
 @forward 'components/header.scss';
+@forward 'components/homePage.scss';
 // variables
 @use 'variables' as *;
 

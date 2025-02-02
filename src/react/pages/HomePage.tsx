@@ -22,20 +22,21 @@ export default function HomePage() {
       <h1 className="hero__title">sm<span className="just-a">a</span>rtfridge</h1>
       {user ? (
         <section className="hero__recipes">
-          <p>
-            Bonjour {user.name} {user.email}
-          </p>
+          {/*<p>*/}
+          {/*  Bonjour {user.name} {user.email}*/}
+          {/*</p>*/}
           <Link
             to={'/login'}
             onClick={() => {
               auth.logout();
             }}
-            className="log-button-white"
+            className="log log-button-white"
           >
-            Se déconnecter
+            O
+            {/*Icone pour se déconnecter*/}
           </Link>
           {/*<Fridge />*/}
-          <Recipes />
+          {/*<Recipes />*/}
           {/*<ShoppingList />*/}
         </section>
       ) : (

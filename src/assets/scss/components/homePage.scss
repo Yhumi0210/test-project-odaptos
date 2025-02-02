@@ -1,36 +1,30 @@
 // variables
 @use '../variables' as *;
 
-.header {
+.hero {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  &__brand {
+  flex-direction: column;
+  height: 70vh;
+  width: 100vw;
+  background-color: $grey;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  position: relative;
+  &__title {
     color: $white;
-    background-color: $grey;
     font-family: $title;
-  }
-  &__nav {
-    &__link {
-      color: $black;
-      position: relative;
-      &:hover {
-        transition:
-                transform 200ms ease-in-out,
-                color 200ms ease-in-out;
-        transform: scale(1.01);
-        color: $red;
-      }
+    padding: 0.7rem 0.7rem;
+    &:hover {
+      transition:
+              transform 200ms ease-in-out,
+              color 200ms ease-in-out;
+      transform: scale(1.01);
+      color: $red;
     }
   }
-  .active {
-    color: $red;
-    position: relative;
-    &:after {
-      content: '●';
-      position: absolute;
-      top: 0.8rem;
-      left: 43%;
-    }
+  .log {
+    color: $black;
+    position: absolute;
+    bottom: 1rem;
+    right: 2.1rem;
   }
 }

@@ -55,21 +55,21 @@ export default function Header() {
         className={`header ${menuOpen ? 'is-open' : isAnimating ? 'is-closed' : ''}`}
         onAnimationEnd={handleAnimationEnd}
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-          className="menu-toggle size-6"
-          onClick={handleMenuToggle}
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-          />
-        </svg>
+        {/*<svg*/}
+        {/*  xmlns="http://www.w3.org/2000/svg"*/}
+        {/*  fill="none"*/}
+        {/*  viewBox="0 0 24 24"*/}
+        {/*  strokeWidth={1.5}*/}
+        {/*  stroke="currentColor"*/}
+        {/*  className="menu-toggle size-6"*/}
+        {/*  onClick={handleMenuToggle}*/}
+        {/*>*/}
+        {/*  <path*/}
+        {/*    strokeLinecap="round"*/}
+        {/*    strokeLinejoin="round"*/}
+        {/*    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"*/}
+        {/*  />*/}
+        {/*</svg>*/}
         <Link to={''} className="header__brand">
           sm<span className="just-a">a</span>rtfridge
         </Link>

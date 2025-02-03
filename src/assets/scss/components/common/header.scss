@@ -1,5 +1,9 @@
 // variables
-@use '../variables' as *;
+@use '../../variables' as *;
+
+.title {
+  display: none;
+}
 
 .header {
   display: flex;
@@ -43,8 +47,17 @@
   display: none;
 }
 @media (max-width: 767px) {
+  .title {
+    display: block;
+    color: $white;
+    font-family: $title;
+    font-size: 2rem;
+    padding: 1rem;
+    background-color: $grey;
+  }
   .header {
     display: none;
+
     &__brand {
       font-size: 2rem;
       font-family: $title;
@@ -101,12 +114,12 @@
       animation: slideIn 500ms forwards;
       @media (min-width: 280px) {
         width: 15rem;
-        height: 26rem;
-        padding: 6rem 2rem 6rem 2rem;
+        height: 25rem;
+        padding: 5rem 2rem 5rem 2rem;
       }
       @media (min-width: 540px) {
         width: 18rem;
-        height: 26rem;
+        height: 25rem;
         padding: 6rem 3rem 6rem 3rem;
       }
     }
@@ -133,12 +146,13 @@
   }
   .menu {
     position: absolute;
-    top: 0.8rem;
-    right: 1.1rem;
+    top: 1.2rem;
+    right: 0.6rem;
     display: block;
     color: $white;
     width: 3rem;
     z-index: 1001;
+    box-sizing: border-box;
     &:hover {
       transition:
         transform 200ms ease-in-out,

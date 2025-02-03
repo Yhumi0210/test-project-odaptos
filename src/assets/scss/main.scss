@@ -2,8 +2,11 @@
 // @forward pour partager même les enfants du parent importé
 // @use pour partager les variables par exemple et éviter de devoir les préfixer
 // components
-@forward 'components/header.scss';
+@forward 'components/common/header';
+@forward 'components/common/footer';
 @forward 'components/homePage.scss';
+@forward 'components/recipeschoice.scss';
+@forward 'components/searchBar.scss';
 // variables
 @use 'variables' as *;
 
@@ -44,21 +47,21 @@ p {
   font-family: $body;
   &:hover {
     transition:
-            transform 200ms ease-in-out,
-            color 200ms ease-in-out;
+      transform 200ms ease-in-out,
+      color 200ms ease-in-out;
     transform: scale(1.01);
     color: $red;
   }
 }
 .log-button-black {
-   color: $black;
-   font-size: 1.2rem;
-   font-family: $body;
-   &:hover {
-     transition:
-             transform 200ms ease-in-out,
-             color 200ms ease-in-out;
-     transform: scale(1.01);
-     color: $red;
-   }
- }
+  color: $black;
+  font-size: 1.2rem;
+  font-family: $body;
+  &:hover {
+    transition:
+      transform 200ms ease-in-out,
+      color 200ms ease-in-out;
+    transform: scale(1.01);
+    color: $red;
+  }
+}

@@ -5,10 +5,21 @@
 @forward 'components/common/header';
 @forward 'components/common/footer';
 @forward 'components/homePage.scss';
-@forward 'components/recipeschoice.scss';
+@forward 'components/RecipesChoice';
 @forward 'components/searchBar.scss';
+@forward 'components/tagFilter.scss';
+@forward 'components/common/animations.scss';
+@forward 'components/fullRecipe.scss';
 // variables
 @use 'variables' as *;
+
+// responsive
+// 280px 767px
+// 768px à 1023px
+// 1024px à 1280px
+// 1281px
+// @media (min-width: 767px) {}
+// @media (min-width: 768px) and {max-width: 1023px} {}
 
 // scss
 * {
@@ -63,5 +74,36 @@ p {
       color 200ms ease-in-out;
     transform: scale(1.01);
     color: $red;
+  }
+}
+
+.tags {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $white;
+  font-family: $body;
+  font-size: 1rem;
+  text-align: center;
+  list-style-type: none;
+  background-color: $grey;
+  width: 6rem;
+  height: 2rem;
+  border-radius: 5px;
+  box-shadow: $shadow-inset;
+  @media (min-width: 768px) {
+    width: 8rem;
+    height: 3rem;
+    font-size: 1.2rem;
+  }
+  @media (min-width: 1280px) {
+    width: 12rem;
+    height: 3.5rem;
+    font-size: 1.5rem;
+  }
+  @media (min-width: 1920px) {
+    width: 15rem;
+    height: 4rem;
+    font-size: 1.8rem;
   }
 }

@@ -9,14 +9,44 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media (min-width: 768px) {
+    background-color: $grey;
+    box-shadow: $box-shadow;
+    position: relative;
+    z-index: 1000;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 5rem;
+    padding: 0 4rem;
+  }
+  @media (min-width: 1024px) {
+    height: 6rem;
+  }
+  @media (min-width: 1280px) {
+    padding: 0 8rem;
+  }
+  @media (min-width: 1920px) {
+    padding: 0 16rem;
+  }
   &__brand {
     color: $white;
     background-color: $grey;
     font-family: $title;
+    @media (min-width: 768px) {
+      font-size: 2rem;
+      color: $white;
+      font-family: $title;
+      display: block;
+    }
+    @media (min-width: 1024px) {
+      font-size: 2.5rem;
+    }
   }
   &__nav {
     &__link {
-      color: $black;
+      color: $white;
       position: relative;
       &:hover {
         transition:
@@ -24,6 +54,9 @@
           color 200ms ease-in-out;
         transform: scale(1.01);
         color: $red;
+      }
+      @media (min-width: 1024px) {
+        font-size: 1.5rem;
       }
     }
   }
@@ -48,12 +81,17 @@
 }
 @media (max-width: 767px) {
   .title {
+    position: relative;
+    z-index: 1000;
     display: block;
-    color: $white;
-    font-family: $title;
-    font-size: 2rem;
     padding: 1rem;
     background-color: $grey;
+    box-shadow: $box-shadow;
+    &__link {
+      color: $white;
+      font-family: $title;
+      font-size: 2rem;
+    }
   }
   .header {
     display: none;
@@ -84,21 +122,6 @@
         }
       }
     }
-    //.menu-toggle {
-    //  position: absolute;
-    //  top: 0.8rem;
-    //  right: 1.1rem;
-    //  display: block;
-    //  color: $white;
-    //  width: 3rem;
-    //  &:hover {
-    //    transition:
-    //      transform 200ms ease-in-out,
-    //      color 200ms ease-in-out;
-    //    transform: scale(1.01);
-    //    color: $red;
-    //  }
-    //}
     &.is-open,
     &.is-closed {
       display: flex;
@@ -106,7 +129,7 @@
       z-index: 1000;
       background-color: $grey;
       border-radius: 0 0 0 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      box-shadow: $box-shadow;
       right: 0;
       top: 0;
       flex-direction: column;

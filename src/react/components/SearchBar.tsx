@@ -3,20 +3,38 @@ import { useState, useEffect } from 'react';
 
 export default function SearchBar({
   onSearch,
+  initialSearchText,
 }: {
   onSearch: (text: string) => void;
+  initialSearchText: string;
 }) {
   const [showSearch, setShowSearch] = useState<boolean>(false);
-  const [searchText, setSearchText] = useState<string>('');
+  const [searchText, setSearchText] = useState<string>(
+    () => localStorage.getItem('searchText') || ''
+  );
+  const [searchOpen, setSearchOpen] = useState<boolean>(false);
+  const [isAnimating, setIsAnimating] = useState<boolean>(false);
+
+  const handleAnimationEnd = () => {
+    setIsAnimating(false);
+    setSearchOpen(!searchOpen);
+  };
 
   useEffect(() => {
-    if (searchText.length > 3) {
+    setSearchText(initialSearchText);
+  }, [initialSearchText]);
+
+  useEffect(() => {
+    if (searchText.length > 0) {
       onSearch(searchText);
     }
+    localStorage.setItem('searchText', searchText);
   }, [searchText]);
 
   return (
-    <div className="search">
+    <div
+      className={`search ${searchOpen ? 'is-search-open' : isAnimating ? 'is-search-closed' : ''}`}
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -24,7 +42,10 @@ export default function SearchBar({
         strokeWidth={1.5}
         stroke="currentColor"
         className="size-6 search__icon"
-        onClick={() => setShowSearch(!showSearch)}
+        onClick={() => {
+          setShowSearch(!showSearch);
+          handleAnimationEnd();
+        }}
       >
         <path
           strokeLinecap="round"
@@ -37,8 +58,11 @@ export default function SearchBar({
           <input
             type="text"
             value={searchText}
-            onChange={(e) => setSearchText(e.target.value)}
-            placeholder="Rechercher une recette"
+            onChange={(e) => {
+              setSearchText(e.target.value);
+              onSearch(e.target.value);
+            }}
+            placeholder="Recette ou ingrédient"
             className="search__input"
           />
         </>

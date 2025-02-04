@@ -1,0 +1,34 @@
+// variables
+@use '../../variables' as *;
+
+.is-search-open,
+.is-search-closed {
+  display: flex;
+  z-index: 1000;
+  background-color: $grey;
+  border-radius: 5px;
+  box-shadow: $box-shadow;
+  flex-direction: column;
+  align-items: flex-start;
+  animation: slideIn 500ms forwards;
+}
+.is-search-closed {
+  animation: slideOut 500ms forwards;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes slideOut {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}

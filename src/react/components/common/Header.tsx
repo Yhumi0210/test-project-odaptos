@@ -1,23 +1,14 @@
 // React
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
-
-// Context
-import { AuthContext } from '../../context/AuthContext.tsx';
 
 // Components
 
 export default function Header() {
   const location = useLocation();
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [isAnimating, setIsAnimating] = useState(false);
-  const auth = useContext(AuthContext);
-  if (!auth) {
-    throw new Error('HomePage must be used within an AuthProvider');
-  }
-
-  const { user } = auth;
+  const [menuOpen, setMenuOpen] = useState<boolean>(false);
+  const [isAnimating, setIsAnimating] = useState<boolean>(false);
 
   const handleMenuToggle = () => {
     setIsAnimating(true);
@@ -36,9 +27,11 @@ export default function Header() {
 
   return (
     <>
-      <Link to={''} className="title">
-        sm<span className="just-a">a</span>rtfridge
-      </Link>
+      <div className="title">
+        <Link to={''} className="title__link">
+          sm<span className="just-a">a</span>rtfridge
+        </Link>
+      </div>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -71,48 +64,6 @@ export default function Header() {
           >
             Recettes
           </Link>
-          <Link
-            to={'/fridge'}
-            className={`header__nav__link ${isActive('/fridge') ? 'active' : ''}`}
-            onClick={() => {
-              setMenuOpen(false);
-            }}
-          >
-            Mon frigo
-          </Link>
-          <Link
-            to={'/shopping-list'}
-            className={`header__nav__link ${isActive('/shopping-list') ? 'active' : ''}`}
-            onClick={() => {
-              setMenuOpen(false);
-            }}
-          >
-            M<span className="just-a">a</span> liste de courses
-          </Link>
-          {user ? (
-            <div className="log">
-              <Link
-                to={'/'}
-                onClick={() => {
-                  auth.logout();
-                  setMenuOpen(false);
-                }}
-                className="log-button-white"
-              >
-                Se déconnecter
-              </Link>
-            </div>
-          ) : (
-            <Link
-              to={'/login'}
-              onClick={() => {
-                setMenuOpen(false);
-              }}
-              className="log-button-white"
-            >
-              Se connecter
-            </Link>
-          )}
         </nav>
       </header>
     </>

@@ -9,16 +9,10 @@ import './assets/scss/main.scss';
 // Pages
 import App from './App.tsx';
 
-// Providers
-import { AppProvider } from './react/provider/AppProvider.tsx';
-import { AuthProvider } from './react/provider/AuthProvider.tsx';
-
 // Children
 import HomePage from './react/pages/HomePage.tsx';
 import NotFound from './react/components/common/NotFound.tsx';
-import Fridge from './react/components/Fridge.tsx';
-import ShoppingList from './react/components/ShoppingList.tsx';
-import Login from './react/components/Login.tsx';
+import FullRecipe from './react/components/common/FullRecipe.tsx';
 
 const router = createBrowserRouter([
   {
@@ -29,16 +23,8 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: '/fridge',
-        element: <Fridge />,
-      },
-      {
-        path: '/shopping-list',
-        element: <ShoppingList />,
-      },
-      {
-        path: '/login',
-        element: <Login />,
+        path: '/recipe/:id',
+        element: <FullRecipe />,
       },
       {
         path: '*',
@@ -50,10 +36,6 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <AppProvider>
-      <AuthProvider>
-        <RouterProvider router={router} />
-      </AuthProvider>
-    </AppProvider>
+    <RouterProvider router={router} />
   </React.StrictMode>
 );

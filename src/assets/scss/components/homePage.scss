@@ -3,12 +3,6 @@
 
 .hero {
   position: relative;
-  &__title {
-    color: $white;
-    font-family: $title;
-    padding: 1rem;
-    background-color: $grey;
-  }
   &__mainrecipe {
     width: 100%;
     //height: 25rem;
@@ -16,10 +10,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: $grey;
+    background-color: $white;
     padding: 1rem;
-    //margin-bottom: 6rem;
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
     &__show {
       display: flex;
       flex-direction: column;
@@ -42,9 +34,11 @@
       &__text {
         font-size: 1.5rem;
         text-align: center;
-        color: $white;
+        color: $grey;
         font-family: $text;
-        margin-bottom: 2rem;
+        @media (min-width: 1024px) {
+          font-size: 2rem;
+        }
       }
       &__title {
         font-size: 2rem;
@@ -63,7 +57,7 @@
     height: 2.1rem;
     border-radius: 50%;
     background-color: $white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+    box-shadow: $box-shadow;
     &__user {
       display: flex;
       justify-content: center;

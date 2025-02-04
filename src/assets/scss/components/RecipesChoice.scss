@@ -1,0 +1,133 @@
+// variables
+@use '../variables' as *;
+
+.recipes {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  &__list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    @media (min-width: 768px) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      justify-content: center;
+      margin: 0 4rem;
+      gap: 6rem;
+    }
+    @media (min-width: 1024px) {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 3rem;
+    }
+    @media (min-width: 1280px) {
+      margin: 0 8rem;
+      gap: 5rem;
+    }
+    @media (min-width: 1920px) {
+      grid-template-columns: repeat(4, 1fr);
+      margin: 0 16rem;
+    }
+    &__card {
+      margin: 2rem 0 2rem 0;
+      width: 70%;
+      height: 14rem;
+      display: flex;
+      align-self: center;
+      justify-self: center;
+      flex-direction: column;
+      justify-content: flex-end;
+      background-color: $grey;
+      border-radius: 5px;
+      box-shadow: $box-shadow;
+      position: relative;
+      @media (min-width: 768px) {
+        margin: 0;
+        width: 17rem;
+      }
+      @media (min-width: 1024px) {
+        margin: 0;
+        width: 16.7rem;
+      }
+      @media (min-width: 1280px) {
+        margin: 0;
+        width: 18rem;
+      }
+      &:hover {
+        .recipes__card__container {
+          transform: rotate(45deg);
+        }
+      }
+
+      &__container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: -1rem;
+        left: -1.4rem;
+        width: 8.5rem;
+        height: 8.5rem;
+        box-shadow: -5px 10px 10px rgba(0, 0, 0, 0.5);
+        border-radius: 50%;
+        transition: transform 300ms ease-in-out;
+        transform: rotate(0deg);
+
+        &__img {
+          width: 10.5rem;
+          height: 10.5rem;
+          object-fit: cover;
+        }
+      }
+
+      &__ingredients {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+
+        &__title {
+          font-size: 1rem;
+          font-family: $body;
+          color: $white;
+          text-align: left;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+          @media (min-width: 1920px) {
+            font-size: 1.4rem;
+          }
+        }
+
+        &__text {
+          width: 100%;
+          height: 3.5rem;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          grid-template-rows: repeat(3, 1fr);
+          justify-content: center;
+
+          li {
+            font-family: $text;
+            font-size: 1rem;
+            text-align: left;
+            color: $white;
+            text-decoration: none;
+            list-style-type: none;
+            @media (min-width: 1920px) {
+              font-size: 1.2rem;
+            }
+          }
+        }
+      }
+    }
+
+    &__text {
+      margin: 1rem;
+      text-align: center;
+    }
+  }
+}

@@ -13,14 +13,10 @@ interface RecipesTypes {
   recipe: RecipeType;
 }
 
-export default function FilteredRecipes({ recipe }: RecipesTypes) {
+export default function CreateRecipeCard({ recipe }: RecipesTypes) {
   return (
     <>
-      <Link
-        to={`/recipe/${recipe.id}`}
-        key={recipe.id}
-        className="recipes__list__card"
-      >
+      <Link to={`/recipe/${recipe.id}`} key={recipe.id} className="recipes__list__card">
         <div className="recipes__list__card__container">
           <img
             className="recipes__list__card__container__img"
@@ -29,9 +25,7 @@ export default function FilteredRecipes({ recipe }: RecipesTypes) {
           />
         </div>
         <div className="recipes__list__card__ingredients">
-          <h2 className="recipes__list__card__ingredients__title">
-            {recipe.name}
-          </h2>
+          <h2 className="recipes__list__card__ingredients__title">{recipe.name}</h2>
           <ul className="recipes__list__card__ingredients__text">
             {recipe.ingredients.map((ingredient, index) => (
               <li key={index}>{ingredient}</li>

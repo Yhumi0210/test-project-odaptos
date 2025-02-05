@@ -3,31 +3,22 @@ import { useState, useEffect } from 'react';
 
 export default function SearchBar({
   onSearch,
-  initialSearchText,
+  searchedText,
 }: {
   onSearch: (text: string) => void;
-  initialSearchText: string;
+  searchedText: string;
 }) {
-  const [showSearch, setShowSearch] = useState<boolean>(false);
   const [searchText, setSearchText] = useState<string>(
     () => localStorage.getItem('searchText') || ''
   );
   const [searchOpen, setSearchOpen] = useState<boolean>(false);
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
 
-  const handleAnimationEnd = () => {
-    setIsAnimating(false);
-    setSearchOpen(!searchOpen);
-  };
-
-  useEffect(() => {
-    setSearchText(initialSearchText);
-  }, [initialSearchText]);
-
   useEffect(() => {
     if (searchText.length > 0) {
       onSearch(searchText);
     }
+    setSearchText(searchedText);
     localStorage.setItem('searchText', searchText);
   }, [searchText]);
 
@@ -43,8 +34,8 @@ export default function SearchBar({
         stroke="currentColor"
         className="size-6 search__icon"
         onClick={() => {
-          setShowSearch(!showSearch);
-          handleAnimationEnd();
+          setIsAnimating(false);
+          setSearchOpen(!searchOpen);
         }}
       >
         <path
@@ -53,7 +44,7 @@ export default function SearchBar({
           d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
         />
       </svg>
-      {showSearch && (
+      {searchOpen && (
         <>
           <input
             type="text"

@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 
 // Components
-import TagComponent from './common/TagComponent.tsx';
+import CreateTag from './CreateTag.tsx';
 
 export default function TagFilter({
   availableTags,
@@ -14,12 +14,17 @@ export default function TagFilter({
   onTagSelect: (selectedTags: string[]) => void;
 }) {
   const [showTags, setShowTags] = useState<boolean>(false);
-  const [localSelectedTags, setLocalSelectedTags] =
-    useState<string[]>(selectedTags);
+  const [isAnimating, setIsAnimating] = useState<boolean>(false);
+  const [localSelectedTags, setLocalSelectedTags] = useState<string[]>(selectedTags);
 
   useEffect(() => {
     setLocalSelectedTags(selectedTags); //
   }, [selectedTags]);
+
+  const handleAnimationEnd = () => {
+    setIsAnimating(false);
+    setShowTags(!showTags);
+  };
 
   const handleTagClick = (tag: string) => {
     let updatedTags;
@@ -37,7 +42,10 @@ export default function TagFilter({
     <section className="searchTag">
       <div
         className="searchTag__container"
-        onClick={() => setShowTags(!showTags)}
+        onClick={() => {
+          setShowTags(!showTags);
+          handleAnimationEnd();
+        }}
       >
         <p className="searchTag__container__placeholder">Recherche par tag</p>
         <svg
@@ -48,22 +56,18 @@ export default function TagFilter({
           stroke="currentColor"
           className={`size-6 searchTag__container__icon ${showTags ? 'rotated' : ''}`}
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="m19.5 8.25-7.5 7.5-7.5-7.5"
-          />
+          <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
         </svg>
       </div>
       {/* Tags list */}
       {showTags && (
-        <ul className="searchTag__list">
+        <ul
+          className={`searchTag__list ${showTags ? 'is-taglist-open' : isAnimating ? 'is-taglist-closed' : ''}`}
+        >
           {availableTags.map((tag) => (
             <li
               key={tag}
-              className={`searchTag__list__item ${
-                selectedTags.includes(tag) ? 'selected' : ''
-              }`}
+              className={`searchTag__list__item ${selectedTags.includes(tag) ? 'selected' : ''}`}
               onClick={() => {
                 handleTagClick(tag);
                 setShowTags(false);
@@ -78,11 +82,7 @@ export default function TagFilter({
       <div className="searchTag__selected">
         {selectedTags.length > 0 &&
           selectedTags.map((tag) => (
-            <TagComponent
-              key={tag}
-              onClick={() => handleTagClick(tag)}
-              tag={tag}
-            />
+            <CreateTag key={tag} onClick={() => handleTagClick(tag)} tag={tag} />
           ))}
       </div>
     </section>

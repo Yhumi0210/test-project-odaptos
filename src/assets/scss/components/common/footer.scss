@@ -7,6 +7,12 @@
   justify-content: space-between;
   align-items: center;
   margin: 1rem;
+  @media (min-width: 1280px) {
+    margin: 2rem 8rem;
+  }
+  @media (min-width: 1920px) {
+    margin: 2rem 16rem;
+  }
   &__title {
     font-family: $title;
     color: $grey;

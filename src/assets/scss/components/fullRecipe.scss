@@ -19,10 +19,12 @@
     }
     @media (min-width: 1920px) {
       font-size: 3rem;
+      padding: 4rem;
     }
   }
   &__container {
     margin-bottom: 1rem;
+
     &__img {
       width: 15rem;
       height: 15rem;
@@ -47,7 +49,7 @@
     }
     @media (min-width: 1920px) {
       font-size: 2rem;
-      margin: 2rem 16rem;
+      margin: 4rem 16rem;
     }
   }
   &__ingredients {

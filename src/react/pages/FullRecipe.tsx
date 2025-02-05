@@ -3,10 +3,10 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 // API
-import { api } from '../../services/api.ts';
+import { api } from '../services/api.ts';
 
 // Components
-import TagComponent from './TagComponent.tsx';
+import CreateTag from '../components/CreateTag.tsx';
 
 // Types
 interface RecipeType {
@@ -57,7 +57,7 @@ export default function FullRecipe() {
       </ul>
       <ul className="fullRecipe__tags">
         {recipe.tags.map((tag) => (
-          <TagComponent key={tag} tag={tag} />
+          <CreateTag key={tag} tag={tag} />
         ))}
       </ul>
     </div>

@@ -43,6 +43,13 @@
       border-radius: 5px;
       box-shadow: $box-shadow;
       position: relative;
+      transition: transform 200ms ease-in-out;
+      &:hover {
+        .recipes__list__card__container {
+          transform: rotate(45deg);
+        }
+        transform: scale(1.02);
+      }
       @media (min-width: 768px) {
         margin: 0;
         width: 17rem;
@@ -55,12 +62,6 @@
         margin: 0;
         width: 18rem;
       }
-      &:hover {
-        .recipes__card__container {
-          transform: rotate(45deg);
-        }
-      }
-
       &__container {
         display: flex;
         justify-content: center;
@@ -73,8 +74,6 @@
         box-shadow: -5px 10px 10px rgba(0, 0, 0, 0.5);
         border-radius: 50%;
         transition: transform 300ms ease-in-out;
-        transform: rotate(0deg);
-
         &__img {
           width: 10.5rem;
           height: 10.5rem;
@@ -88,7 +87,7 @@
         display: flex;
         flex-direction: column;
         padding: 1rem;
-
+        overflow: hidden;
         &__title {
           font-size: 1rem;
           font-family: $body;

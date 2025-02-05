@@ -1,25 +1,35 @@
 // imports
 // @forward pour partager même les enfants du parent importé
 // @use pour partager les variables par exemple et éviter de devoir les préfixer
+
 // components
+// common
 @forward 'components/common/header';
 @forward 'components/common/footer';
+
+// pages
 @forward 'components/homePage.scss';
-@forward 'components/RecipesChoice';
+@forward 'components/fullRecipe.scss';
+@forward 'components/common/notFound.scss';
+
+//animations
+@forward 'components/common/animations.scss';
+
+// reusable components
+@forward 'components/recipesDisplay.scss';
 @forward 'components/searchBar.scss';
 @forward 'components/tagFilter.scss';
-@forward 'components/common/animations.scss';
-@forward 'components/fullRecipe.scss';
+@forward 'components/clearSearchAndTags.scss';
+
 // variables
 @use 'variables' as *;
 
 // responsive
-// 280px 767px
-// 768px à 1023px
-// 1024px à 1280px
-// 1281px
-// @media (min-width: 767px) {}
-// @media (min-width: 768px) and {max-width: 1023px} {}
+// 280px
+// 768px
+// 1024px
+// 1280px
+// 1920px
 
 // scss
 * {

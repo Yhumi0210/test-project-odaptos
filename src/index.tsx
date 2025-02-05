@@ -11,8 +11,8 @@ import App from './App.tsx';
 
 // Children
 import HomePage from './react/pages/HomePage.tsx';
-import NotFound from './react/components/common/NotFound.tsx';
-import FullRecipe from './react/components/common/FullRecipe.tsx';
+import NotFound from './react/pages/NotFound.tsx';
+import FullRecipe from './react/pages/FullRecipe.tsx';
 
 const router = createBrowserRouter([
   {

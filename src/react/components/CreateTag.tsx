@@ -1,4 +1,4 @@
-export default function TagComponent({
+export default function CreateTag({
   tag,
   onClick,
 }: {

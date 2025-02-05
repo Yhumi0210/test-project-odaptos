@@ -1,27 +1,24 @@
 // React
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
-
-// Components
+import { Link, useLocation } from 'react-router-dom';
 
 export default function Header() {
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
 
-  const handleMenuToggle = () => {
+  const toggleMenu = () => {
     setIsAnimating(true);
     setMenuOpen(!menuOpen);
   };
 
-  const handleAnimationEnd = () => {
+  const endAnimation = () => {
     setIsAnimating(false);
   };
 
   const isActive = (path: string) => {
-    if (path === '/' && location.pathname === '/') return true; // Page d'accueil
-    if (path !== '/' && location.pathname.includes(path)) return true; // Autres pages avec ID
+    if (path === '/' && location.pathname === '/') return true;
+    if (path !== '/' && location.pathname.includes(path)) return true;
     return false;
   };
 
@@ -39,7 +36,7 @@ export default function Header() {
         strokeWidth={1.5}
         stroke="currentColor"
         className="menu size-6"
-        onClick={handleMenuToggle}
+        onClick={toggleMenu}
       >
         <path
           strokeLinecap="round"
@@ -49,7 +46,7 @@ export default function Header() {
       </svg>
       <header
         className={`header ${menuOpen ? 'is-open' : isAnimating ? 'is-closed' : ''}`}
-        onAnimationEnd={handleAnimationEnd}
+        onAnimationEnd={endAnimation}
       >
         <Link to={''} className="header__brand">
           sm<span className="just-a">a</span>rtfridge

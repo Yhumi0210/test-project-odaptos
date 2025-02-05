@@ -1,4 +1,4 @@
-// React
+// Hooks & Effects
 import { useEffect, useState } from 'react';
 
 // API
@@ -77,7 +77,7 @@ export default function RecipesDisplay() {
       localStorage.setItem('searchText', newSearchText);
     }
 
-    // Définit l'état actuel des filtres
+    // Définit le state actuel des filtres
     const currentTags = newTags !== undefined ? newTags : selectedTags;
     const currentSearchText = newSearchText !== undefined ? newSearchText : searchText;
 

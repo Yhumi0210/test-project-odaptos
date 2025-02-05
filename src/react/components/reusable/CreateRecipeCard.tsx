@@ -1,4 +1,4 @@
-// React
+// Hooks & Effects
 import { Link } from 'react-router-dom';
 
 // Types

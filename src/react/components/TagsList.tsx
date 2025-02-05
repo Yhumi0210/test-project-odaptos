@@ -1,4 +1,4 @@
-// React
+// Hooks & Effects
 import { useState } from 'react';
 
 // Components

@@ -19,7 +19,7 @@ export default function ClearSearchAndTags({
   setFoundRecipes: (recipes: Recipe[]) => void;
   recipes: Recipe[];
 }) {
-  const handleClear = () => {
+  const clearFilters = () => {
     localStorage.removeItem('selectedTags');
     localStorage.removeItem('searchText');
 
@@ -31,7 +31,7 @@ export default function ClearSearchAndTags({
   return (
     <div className="clearSearchAndTags">
       <svg
-        onClick={handleClear}
+        onClick={clearFilters}
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"

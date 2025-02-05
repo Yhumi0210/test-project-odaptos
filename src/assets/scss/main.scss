@@ -8,18 +8,20 @@
 @forward 'components/common/footer';
 
 // pages
-@forward 'components/homePage.scss';
-@forward 'components/fullRecipe.scss';
-@forward 'components/common/notFound.scss';
+@forward 'pages/homePage';
+@forward 'pages/fullRecipe';
+@forward 'pages/notFound';
 
-//animations
+// animations
 @forward 'components/common/animations.scss';
 
 // reusable components
+@forward 'components/reusable/clearSearchAndTags';
+
+// components
 @forward 'components/recipesDisplay.scss';
 @forward 'components/searchBar.scss';
-@forward 'components/tagFilter.scss';
-@forward 'components/clearSearchAndTags.scss';
+@forward 'components/tagsList';
 
 // variables
 @use 'variables' as *;

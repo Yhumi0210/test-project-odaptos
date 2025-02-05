@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { api } from '../services/api.ts';
 
 // Components
-import CreateTag from '../components/CreateTag.tsx';
+import CreateTag from '../components/reusable/CreateTag.tsx';
 
 // Types
 interface RecipeType {
@@ -20,7 +20,6 @@ interface RecipeType {
 
 export default function FullRecipe() {
   const { id } = useParams();
-  //const [recipes, setRecipes] = useState<RecipeType[]>([]);
   const [recipe, setRecipe] = useState<RecipeType | null>(null);
 
   useEffect(() => {

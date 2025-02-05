@@ -3,12 +3,12 @@ import { useEffect, useState } from 'react';
 
 // API
 import { api } from '../services/api.ts';
-import CreateRecipeCard from './CreateRecipeCard.tsx';
+import CreateRecipeCard from './reusable/CreateRecipeCard.tsx';
 
 // Components
 import SearchBar from './SearchBar.tsx';
-import TagFilter from './TagFilter.tsx';
-import ClearSearchAndTags from './ClearSearchAndTags.tsx';
+import TagsList from './TagsList.tsx';
+import ClearSearchAndTags from './reusable/ClearSearchAndTags.tsx';
 
 // Types
 interface Recipe {
@@ -102,7 +102,7 @@ export default function RecipesDisplay() {
           onSearch={(searchedRecipes) => updateRecipesByFilters(undefined, searchedRecipes)}
           searchedText={searchText}
         />
-        <TagFilter
+        <TagsList
           availableTags={allTags}
           selectedTags={selectedTags}
           onTagSelect={(tags) => updateRecipesByFilters(tags, undefined)}

@@ -15,6 +15,10 @@ export default function SearchBar({
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
 
   useEffect(() => {
+    setSearchText(searchedText);
+  }, [searchedText]);
+
+  useEffect(() => {
     if (searchText.length > 0) {
       onSearch(searchText);
     }

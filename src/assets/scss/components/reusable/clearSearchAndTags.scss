@@ -1,0 +1,32 @@
+// variables
+@use '../../variables' as *;
+
+.clearSearchAndTags {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0 2rem 0;
+  @media (min-width: 768px) {
+    margin: 0 0 4rem 0;
+  }
+  &__icon {
+    position: absolute;
+    width: 2.5rem;
+    height: 2.5rem;
+    cursor: pointer;
+    color: $grey;
+    @media (min-width: 1024px) {
+      top: -11.8rem;
+      right: 0.8rem;
+    }
+    @media (min-width: 1280px) {
+      top: -14.8rem;
+      right: 2.8rem;
+    }
+    @media (min-width: 1920px) {
+      top: -15.3rem;
+      right: 12rem;
+    }
+  }
+}

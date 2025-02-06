@@ -1,0 +1,26 @@
+// variables
+@use '../variables' as *;
+
+.hero {
+  position: relative;
+  &__title {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: $white;
+    padding: 1rem;
+    font-size: 1.5rem;
+    text-align: center;
+    color: $grey;
+    font-family: $text;
+    @media (min-width: 1024px) {
+      font-size: 2rem;
+    }
+    @media (min-width: 1920px) {
+      font-size: 3rem;
+      padding: 3rem;
+    }
+  }
+}

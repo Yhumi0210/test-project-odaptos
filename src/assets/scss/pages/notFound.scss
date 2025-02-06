@@ -1,0 +1,24 @@
+// variables
+@use '../variables' as *;
+
+.notFound {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  @media (min-width: 768px) {
+    margin: 4rem;
+  }
+  &__title {
+    font-family: $title;
+    color: $grey;
+    font-size: 5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  &__link {
+    @media (min-width: 768px) {
+      margin-top: 4rem;
+    }
+  }
+}

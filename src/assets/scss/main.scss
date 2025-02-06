@@ -1,38 +1,54 @@
 // imports
-@forward 'components/navBar.scss';
+// @forward pour partager même les enfants du parent importé
+// @use pour partager les variables par exemple et éviter de devoir les préfixer
 
-// fonts
-@font-face {
-  font-family: 'Promt';
-  src: url('../fonts/Prompt-Bold.ttf') format('truetype');
-}
-@font-face {
-  font-family: 'Josefin';
-  src: url('../fonts/JosefinSans-Bold.ttf') format('truetype');
-}
-@font-face {
-  font-family: 'HindMadurai';
-  src: url('../fonts/HindMadurai-Light.ttf') format('truetype');
-}
+// components
+// common
+@forward 'components/common/header';
+@forward 'components/common/footer';
 
-// colors
-$white: #EAEAEA;
-$black: #26282B;
-$red: #FF555D;
+// pages
+@forward 'pages/homePage';
+@forward 'pages/fullRecipe';
+@forward 'pages/notFound';
 
-//variables
-$title: 'Promt', sans-serif;
-$body: 'Josefin', sans-serif;
-$text: 'HindMadurai', sans-serif;
+// animations
+@forward 'components/common/animations.scss';
 
-//scss
+// reusable components
+@forward 'components/reusable/clearSearchAndTags';
+
+// components
+@forward 'components/recipesDisplay.scss';
+@forward 'components/searchBar.scss';
+@forward 'components/tagsList';
+
+// variables
+@use 'variables' as *;
+
+// responsive
+// 280px
+// 375px
+// 425px
+// 768px
+// 1024px
+// 1280px
+// 1920px
+
+// scss
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  text-decoration: none;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: $title;
 }
 
@@ -44,4 +60,64 @@ body {
 
 p {
   font-family: $text;
+}
+
+.just-a {
+  color: $red;
+}
+
+.log-button-white {
+  color: $white;
+  font-size: 1.2rem;
+  font-family: $body;
+  &:hover {
+    transition:
+      transform 200ms ease-in-out,
+      color 200ms ease-in-out;
+    transform: scale(1.01);
+    color: $red;
+  }
+}
+.log-button-black {
+  color: $black;
+  font-size: 1.2rem;
+  font-family: $body;
+  &:hover {
+    transition:
+      transform 200ms ease-in-out,
+      color 200ms ease-in-out;
+    transform: scale(1.01);
+    color: $red;
+  }
+}
+
+.tags {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $white;
+  font-family: $body;
+  font-size: 1rem;
+  text-align: center;
+  list-style-type: none;
+  background-color: $grey;
+  width: 6rem;
+  height: 2rem;
+  border-radius: 5px;
+  box-shadow: $shadow-inset;
+  @media (min-width: 768px) {
+    width: 8rem;
+    height: 3rem;
+    font-size: 1.2rem;
+  }
+  @media (min-width: 1280px) {
+    width: 12rem;
+    height: 3.5rem;
+    font-size: 1.5rem;
+  }
+  @media (min-width: 1920px) {
+    width: 15rem;
+    height: 4rem;
+    font-size: 1.8rem;
+  }
 }

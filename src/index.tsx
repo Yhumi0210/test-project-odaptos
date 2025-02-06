@@ -1,34 +1,41 @@
-// React
-import ReactDOM from 'react-dom/client'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+// React & React-Router-DOM
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 // SCSS
-import './assets/scss/main.scss'
+import './assets/scss/main.scss';
 
 // Pages
-import App from './App.tsx'
+import App from './App.tsx';
 
 // Children
-import HomePage from './react/pages/HomePage.tsx'
-import NotFound from './react/components/common/NotFound.tsx'
-
+import HomePage from './react/pages/HomePage.tsx';
+import NotFound from './react/pages/NotFound.tsx';
+import FullRecipe from './react/pages/FullRecipe.tsx';
 
 const router = createBrowserRouter([
-    {
-        element: <App />,
-        children: [
-            {
-                path: '',
-                element: <HomePage />,
-            },
-            {
-                path: '*',
-                element: <NotFound/>,
-            },
-        ],
-    },
-])
+  {
+    element: <App />,
+    children: [
+      {
+        path: '/',
+        element: <HomePage />,
+      },
+      {
+        path: '/recipe/:id',
+        element: <FullRecipe />,
+      },
+      {
+        path: '*',
+        element: <NotFound />,
+      },
+    ],
+  },
+]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-    <RouterProvider router={router}/>
-)
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>
+);

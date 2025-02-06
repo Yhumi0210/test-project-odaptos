@@ -25,6 +25,7 @@ yarn dev
 
 L'application front-end est codée en React, TypeScript et SCSS.
 Les tests unitaires et d'intégration sont écrits avec Jest.
+Outils de développement utilisés : Prettier, ESLint, Vite, Node.js & npm.
 
 Les données sont persistantes en localStorage, elles sont récupérées depuis l'API.
 

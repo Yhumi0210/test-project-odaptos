@@ -23,6 +23,14 @@ npm run dev
 yarn dev
 ```
 
+## Lancer les tests unitaires et d'intégration
+
+```bash
+npm run test
+# or
+yarn dev
+```
+
 L'application front-end est codée en React, TypeScript et SCSS.
 Les tests unitaires et d'intégration sont écrits avec Jest.
 Outils de développement utilisés : Prettier, ESLint, Vite, Node.js & npm.

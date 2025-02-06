@@ -1,3 +1,7 @@
+// @ts-expect-error TS6133: React is declared but its value is never read. I need to use it for Jest
+// React & React-Router-DOM
+import React from 'react';
+
 // Hooks & Effects
 import { useState, useEffect } from 'react';
 
@@ -41,6 +45,7 @@ export default function SearchBar({
           setIsAnimating(false);
           setSearchOpen(!searchOpen);
         }}
+        data-testid="search-icon"
       >
         <path
           strokeLinecap="round"
@@ -59,6 +64,7 @@ export default function SearchBar({
             }}
             placeholder="Recette ou ingrédient"
             className="search__input"
+            aria-label="Recherche"
           />
         </>
       )}

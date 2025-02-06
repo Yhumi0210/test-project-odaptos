@@ -1,3 +1,7 @@
+// @ts-expect-error TS6133: React is declared but its value is never read. I need to use it for Jest
+// React & React-Router-DOM
+import React from 'react';
+
 // Types
 interface Recipe {
   id: number;
@@ -38,6 +42,7 @@ export default function ClearSearchAndTags({
         strokeWidth={1.5}
         stroke="currentColor"
         className="clearSearchAndTags__icon"
+        data-testid="clear-icon"
       >
         <path
           strokeLinecap="round"

@@ -1,3 +1,7 @@
+// @ts-expect-error TS6133: React is declared but its value is never read. I need to use it for Jest
+// React & React-Router-DOM
+import React from 'react';
+
 // Hooks & Effects
 import { useState } from 'react';
 
@@ -35,6 +39,7 @@ export default function TagsList({
           strokeWidth={1.5}
           stroke="currentColor"
           className={`size-6 searchTag__container__icon ${tagsList ? 'rotated' : ''}`}
+          data-testid="tag-list-icon"
         >
           <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
         </svg>

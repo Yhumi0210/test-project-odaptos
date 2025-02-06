@@ -1,5 +1,9 @@
-// Hooks & Effects
+// @ts-expect-error TS6133: React is declared but its value is never read. I need to use it for Jest
+// React & React-Router-DOM
+import React from 'react';
 import { useParams } from 'react-router-dom';
+
+// Hooks & Effects
 import { useEffect, useState } from 'react';
 
 // API
